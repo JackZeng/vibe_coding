@@ -1,0 +1,27 @@
+{
+  "name": "launchpad-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm -r --parallel --filter ./apps/* run dev",
+    "test": "pnpm -r run test",
+    "seed": "tsx scripts/seed.ts",
+    "score-cron": "tsx apps/worker/src/recomputeScores.ts",
+    "lint": "echo 'lint placeholder'"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "tsx": "^4.7.0",
+    "concurrently": "^8.2.2"
+  }
+}
